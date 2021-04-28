@@ -5,11 +5,14 @@ export function RepositoryItem(props) {
         <li>
             <strong>{props.repository.name}</strong>            {/* props.repository.name ?? 'Default' -> ?? caso propriedade vazia */}
 
+            <p>Teste</p>
             <p>{props.repository.description}</p>
 
             <a href={props.repository.html_url}>
                 Acessar Repositório
             </a>
         </li>
+
+
     );
 }

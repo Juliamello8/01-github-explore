@@ -7,13 +7,13 @@ const isDevelopment = process.env.NODE_ENV !== 'production';
 module.exports = {
     mode: isDevelopment ? 'development' : 'production',
     devtool: isDevelopment ? 'eval-source-map' : 'source-map',
-    entry: path.resolve(__dirname, 'src', 'index.jsx'), //arquivo inicial da aplicação
+    entry: path.resolve(__dirname, 'src', 'index.tsx'), //arquivo inicial da aplicação
     output: { //arquivo que será gerado com webpack
         path: path.resolve(__dirname, 'dist'),
         filename: 'bundle.js',
     },
     resolve: {
-        extensions: ['.js', '.jsx'],
+        extensions: ['.js', '.jsx', '.ts', '.tsx'],
     },
     plugins: [
         isDevelopment && new ReactRefreshWebpackPlugin(), // && pode ser usado como if sem o else
@@ -29,7 +29,7 @@ module.exports = {
     module: { //config de como serão lidados os arquivos
         rules: [
             {
-                test: /\.jsx$/,//expressão regular verifica arquivos .jsx
+                test: /\.(j|t)sx$/,//expressão regular verifica arquivos .jsx ou .tsx
                 exclude: /node_mudules/,
                 use: {
                     loader: 'babel-loader',//integração entre babel e webpack
